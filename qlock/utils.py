@@ -11,7 +11,7 @@ def time_to_text(words, time):
 
     # Start Text
     text = "ES IST"
-    word_leds = [words['TEXT']['ES'], words['TEXT']['IST']]
+    word_leds = [words['TEXT']['HET'], words['TEXT']['IS']]
     corner_leds = []
     minutes = 0
 
@@ -23,60 +23,67 @@ def time_to_text(words, time):
         text += ""
         minutes = M
     elif 5 <= M < 10 or 55 <= M <= 59:
-        text += "FÜNF"
-        word_leds.append(words['MINUTES']['FUENF'])
+        text += "VIJF"
+        word_leds.append(words['MINUTES']['VIJF'])
         if M < 10:
             minutes = M - 5
         else:
             minutes = M - 55
     elif 10 <= M < 15 or 50 <= M < 55:
-        text += "ZEHN"
-        word_leds.append(words['MINUTES']['ZEHN'])
+        text += "TIEN"
+        word_leds.append(words['MINUTES']['TIEN'])
         if M < 15:
             minutes = M - 10
         else:
             minutes = M - 50
     elif 15 <= M < 20 or 45 <= M < 50:
-        text += "VIERTEL"
-        word_leds.append(words['MINUTES']['VIERTEL'])
+        text += "KWART"
+        word_leds.append(words['MINUTES']['KWART'])
         if M < 20:
             minutes = M - 15
         else:
             minutes = M - 45
-    elif 20 <= M < 25 or 40 <= M < 45:
-        text += "ZWANZIG"
-        word_leds.append(words['MINUTES']['ZWANZIG'])
+    elif 20 <= M < 25:
+        text += "TIEN VOOR HALF"
+        word_leds.append(words['MINUTES']['TIEN'])
+        word_leds.append(words['TEXT']['VOOR'])
+        word_leds.append(words['TEXT']['HALF'])
         if M < 25:
             minutes = M - 20
-        else:
+    elif 40 <= M < 45:
+        text += "TIEN OVER HALF"
+        word_leds.append(words['MINUTES']['TIEN'])
+        word_leds.append(words['TEXT']['OVER'])
+        word_leds.append(words['TEXT']['HALF'])
+        if M < 45:
             minutes = M - 40
     elif 25 <= M < 30:
-        text += "FUENF VOR HALB"
-        word_leds.append(words['MINUTES']['FUENF'])
-        word_leds.append(words['TEXT']['VOR'])
-        word_leds.append(words['TEXT']['HALB'])
+        text += "VIJF VOOR HALF"
+        word_leds.append(words['MINUTES']['VIJF'])
+        word_leds.append(words['TEXT']['VOOR'])
+        word_leds.append(words['TEXT']['HALF'])
         minutes = M - 25
     elif 30 <= M < 35:
-        text += "HALB"
-        word_leds.append(words['TEXT']['HALB'])
+        text += "HALF"
+        word_leds.append(words['TEXT']['HALF'])
         minutes = M - 30
     elif 35 <= M < 40:
-        text += "FUENF NACH HALB"
-        word_leds.append(words['MINUTES']['FUENF'])
-        word_leds.append(words['TEXT']['NACH'])
-        word_leds.append(words['TEXT']['HALB'])
+        text += "VIJF OVER HALF"
+        word_leds.append(words['MINUTES']['VIJF'])
+        word_leds.append(words['TEXT']['OVER'])
+        word_leds.append(words['TEXT']['HALF'])
         minutes = M - 35
 
     # Space
     text += " "
 
     # Sign
-    if 5 <= M < 25:
-        text += "NACH"
-        word_leds.append(words['TEXT']['NACH'])
-    elif 40 <= M <= 59:
-        text += "VOR"
-        word_leds.append(words['TEXT']['VOR'])
+    if 5 <= M < 14 | 35 <= M < 44:
+        text += "OVER"
+        word_leds.append(words['TEXT']['OVER'])
+    elif 20 <= M <= 29 | 50 <= M < 59:
+        text += "VOOR"
+        word_leds.append(words['TEXT']['VOOR'])
 
     # Space
     text += " "
@@ -89,51 +96,51 @@ def time_to_text(words, time):
         H = H - 12
 
     if H == 1 and M >= 5:
-        text += "EINS"
-        word_leds.append(words['HOURS']['EINS'])
+        text += "EEN"
+        word_leds.append(words['HOURS']['EEN'])
     elif H == 1 and M < 5:
-        text += "EIN"
-        word_leds.append(words['HOURS']['EIN'])
+        text += "EEN"
+        word_leds.append(words['HOURS']['EEN'])
     elif H == 2:
-        text += "ZWEI"
-        word_leds.append(words['HOURS']['ZWEI'])
+        text += "TWEE"
+        word_leds.append(words['HOURS']['TWEE'])
     elif H == 3:
-        text += "DREI"
-        word_leds.append(words['HOURS']['DREI'])
+        text += "DRIE"
+        word_leds.append(words['HOURS']['DRIE'])
     elif H == 4:
         text += "VIER"
         word_leds.append(words['HOURS']['VIER'])
     elif H == 5:
-        text += "FÜNF"
-        word_leds.append(words['HOURS']['FUENF'])
+        text += "VIJF"
+        word_leds.append(words['HOURS']['VIJF'])
     elif H == 6:
-        text += "SECHS"
-        word_leds.append(words['HOURS']['SECHS'])
+        text += "ZES"
+        word_leds.append(words['HOURS']['ZES'])
     elif H == 7:
-        text += "SIEBEN"
-        word_leds.append(words['HOURS']['SIEBEN'])
+        text += "ZEVEN"
+        word_leds.append(words['HOURS']['ZEVEN'])
     elif H == 8:
         text += "ACHT"
         word_leds.append(words['HOURS']['ACHT'])
     elif H == 9:
-        text += "NEUN"
-        word_leds.append(words['HOURS']['NEUN'])
+        text += "NEGEN"
+        word_leds.append(words['HOURS']['NEGEN'])
     elif H == 10:
-        text += "ZEHN"
-        word_leds.append(words['HOURS']['ZEHN'])
+        text += "TIEN"
+        word_leds.append(words['HOURS']['TIEN'])
     elif H == 11:
         text += "ELF"
         word_leds.append(words['HOURS']['ELF'])
     elif H == 12 or H == 0:
-        text += "ZWÖLF"
-        word_leds.append(words['HOURS']['ZWOELF'])
+        text += "TWAALF"
+        word_leds.append(words['HOURS']['TWAALF'])
 
     # UHR
     if M < 5:
         # Space
         text += " "
-        text += "UHR"
-        word_leds.append(words['TEXT']['UHR'])
+        text += "UUR"
+        word_leds.append(words['TEXT']['UUR'])
 
     # Space
     if minutes != 0:
@@ -141,17 +148,17 @@ def time_to_text(words, time):
 
     # Dots
     if minutes == 1:
-        text += "PUNKT1"
-        corner_leds.append(words['MINUTES']['PUNKT1'])
+        text += "PUNT1"
+        corner_leds.append(words['MINUTES']['PUNT1'])
     if minutes == 2:
-        text += "PUNKT2"
-        corner_leds.append(words['MINUTES']['PUNKT2'])
+        text += "PUNT2"
+        corner_leds.append(words['MINUTES']['PUNT2'])
     if minutes == 3:
-        text += "PUNKT3"
-        corner_leds.append(words['MINUTES']['PUNKT3'])
+        text += "PUNT3"
+        corner_leds.append(words['MINUTES']['PUNT3'])
     if minutes == 4:
-        text += "PUNKT4"
-        corner_leds.append(words['MINUTES']['PUNKT4'])
+        text += "PUNT4"
+        corner_leds.append(words['MINUTES']['PUNT4'])
 
     text = re.sub(' +', ' ', text)
     word_leds = [item for sublist in word_leds for item in sublist]
